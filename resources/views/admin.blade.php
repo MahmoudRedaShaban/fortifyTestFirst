@@ -2,23 +2,24 @@
 
 @section('logout')
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="{{ route('logout.user') }}"
+    <a class="dropdown-item" href="{{ route('admin.logout') }}"
        onclick="event.preventDefault();
                      document.getElementById('logout-form').submit();">
         {{ __('Logout') }}
     </a>
 
-    <form id="logout-form" action="{{ route('logout.user') }}" method="POST" class="d-none">
+    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
         @csrf
     </form>
 </div>
 @endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard') }} Admin</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -27,7 +28,7 @@
                         </div>
                     @endif
 
-                    {{-- {{ __('You are logged in!') }} --}}
+                    {{-- {{ __('You are Admin logged in!') }} --}}
                     @component('components.who')
                     @endcomponent
                 </div>
