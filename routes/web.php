@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminResetPasswordcontroller;
 use App\Http\Controllers\AdminController;
+use App\Models\variable;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
+    return view('welcome');
+}); */
+
+
+/* Goggle Sheet Service */
+Route::get('/', function (\App\Services\GoogleSheet $googleSheet) {
+    $value = [
+        [3,'Jhon', 'JSALBUM', '2020-07-14',4],
+        [4,'Robert', 'WebSite', '2021-11-02',2]
+    ];
+
+    // $saveData = $googleSheet->saveDataToSheet($value);
+    // dump($saveData);
+
+    $googleSheet->readGoogleSheet();
     return view('welcome');
 });
+
+
 
 Route::view('/home', 'home')->middleware('auth');
 Route::post('/logoutuser', [AdminController::class,'logoutUser'])->middleware('auth')->name('logout.user');
