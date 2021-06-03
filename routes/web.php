@@ -16,5 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 Route::view('/home', 'home')->middleware('auth');
+=======
+Route::view('/home', 'adminLite.dashboard')->middleware('auth');
+>>>>>>> adminlit
